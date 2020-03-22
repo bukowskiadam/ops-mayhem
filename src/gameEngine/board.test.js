@@ -29,10 +29,9 @@ describe('Board', () => {
   });
 
   it('allows to count fields with a given state', () => {
-    const size = 3;
-    const board = Board(size, COMPUTER.GOOD);
+    const board = Board(3, COMPUTER.GOOD);
 
-    expect(board.count(COMPUTER.GOOD)).toBe(size * size);
+    expect(board.count(COMPUTER.GOOD)).toBe(board.fieldsCount);
 
     board.setField(2, COMPUTER.OVERDUE);
     board.setField(3, COMPUTER.OVERDUE);
@@ -41,6 +40,12 @@ describe('Board', () => {
 
     expect(board.count(COMPUTER.OVERDUE)).toBe(2);
     expect(board.count(COMPUTER.BAD)).toBe(2);
-    expect(board.count(COMPUTER.GOOD)).toBe(size * size - 2 - 2);
+    expect(board.count(COMPUTER.GOOD)).toBe(board.fieldsCount - 2 - 2);
+  });
+
+  it('throws exception when trying to set field out of the board size', () => {
+    const board = Board(3, COMPUTER.GOOD);
+
+    expect(() => board.setField(board.fieldsCount, COMPUTER.BAD)).toThrow();
   });
 });

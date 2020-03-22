@@ -4,7 +4,13 @@ export const Board = (size, initialState) => {
 
   const getFields = () => fields;
 
-  const setField = (fieldPosition, state) => {fields[fieldPosition] = state; };
+  const setField = (fieldPosition, state) => {
+    if (fieldPosition >= fieldsCount) {
+      throw new Error(`Field ${ fieldPosition } is out of the board of ${ fieldsCount } total fields`);
+    }
+
+    fields[fieldPosition] = state;
+  };
 
   const count = (state) => fields.filter(field => field === state).length;
 
