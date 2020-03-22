@@ -18,7 +18,7 @@ describe('Game', () => {
 
   const expectBoardOnlyOf = (computerStatus) => {
     const { board } = gameState();
-    expect(board.count(computerStatus)).toBe(board.getFields().length);
+    expect(board.count(computerStatus)).toBe(board.fieldsCount);
   };
 
   describe('generic flow', () => {

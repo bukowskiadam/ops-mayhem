@@ -1,4 +1,5 @@
 export const Board = (size, initialState) => {
+  const fieldsCount = size * size;
   const fields = new Array(size * size).fill(initialState);
 
   const getFields = () => fields;
@@ -11,5 +12,6 @@ export const Board = (size, initialState) => {
     getFields,
     setField,
     count,
+    fieldsCount,
   };
 };

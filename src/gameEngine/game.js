@@ -1,5 +1,6 @@
 import { COMPUTER, GAME_STATUS } from './consts';
 import { Board } from './board';
+import { randomBreakOrder } from './breakOrder';
 
 export const Game = ({
   timeOfRest,
@@ -19,13 +20,18 @@ export const Game = ({
   let currentTimeout;
 
   const breakNextComputer = () => {
-    state.board.setField(0, COMPUTER.BAD);
+    const next = internalState.breakOrder.next();
+
+    if (!next.done) {
+      state.board.setField(next.value, COMPUTER.BAD);
+    }
   };
 
   const run = () => {
     state.status = GAME_STATUS.RUNNING;
     state.boardSize = internalState.boardSize;
     state.board = Board(internalState.boardSize, COMPUTER.GOOD);
+    internalState.breakOrder = randomBreakOrder(state.board.fieldsCount);
 
     currentTimeout = setTimeout(breakNextComputer, internalState.timeOfRest);
   };

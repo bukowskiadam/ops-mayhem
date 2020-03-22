@@ -13,6 +13,7 @@ describe('Board', () => {
       COMPUTER.GOOD, COMPUTER.GOOD, COMPUTER.GOOD,
       COMPUTER.GOOD, COMPUTER.GOOD, COMPUTER.GOOD,
     ]);
+    expect(board.fieldsCount).toBe(9);
   });
 
   it('allows to set given field to given value', () => {
