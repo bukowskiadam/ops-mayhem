@@ -9,15 +9,9 @@ describe('Game', () => {
   const timeOfRest = 1000;
   const boardSize = 3;
 
-  beforeEach(() => {
-    game = Game({
-      timeOfRest,
-      boardSize,
-    });
-  });
-
-  afterEach(() => {
-    game.destroy();
+  const createGame = () => Game({
+    timeOfRest,
+    boardSize,
   });
 
   const gameState = () => game.getState();
@@ -27,45 +21,53 @@ describe('Game', () => {
     expect(board.count(computerStatus)).toBe(board.getFields().length);
   };
 
-  it('creates new game instance with required methods', () => {
-    expect(game).toBeInstanceOf(Object);
-    expect(game).toStrictEqual({
-      run: expect.any(Function),
-      getState: expect.any(Function),
-      action: expect.any(Function),
-      destroy: expect.any(Function),
+  describe('generic flow', () => {
+    beforeAll(() => {
+      game = createGame();
     });
-  });
 
-  it('returns current game status when game is started', () => {
-    expect(gameState().status).toBe(GAME_STATUS.NOT_STARTED);
+    afterAll(() => {
+      game.destroy();
+    });
 
-    game.run();
+    it('creates new game instance with required methods', () => {
+      expect(game).toBeInstanceOf(Object);
+      expect(game).toStrictEqual({
+        run: expect.any(Function),
+        getState: expect.any(Function),
+        action: expect.any(Function),
+        destroy: expect.any(Function),
+      });
+    });
 
-    expect(gameState().status).toBe(GAME_STATUS.RUNNING);
-  });
+    it('returns correct game state before it is started', () => {
+      expect(gameState()).toStrictEqual({
+        boardSize: 3,
+        status: GAME_STATUS.NOT_STARTED,
+        board: null,
+      });
+    });
 
-  it('returns board size', () => {
-    expect(gameState().boardSize).toBe(boardSize);
-  });
+    it('returns correct game status after game is started', () => {
+      game.run();
 
-  it('starts the game with board of only good computers', () => {
-    expect(gameState().board).toBe(null);
+      expect(gameState().status).toBe(GAME_STATUS.RUNNING);
+    });
 
-    game.run();
+    it('starts the game with board of only good computers', () => {
+      expectBoardOnlyOf(COMPUTER.GOOD);
+    });
 
-    expectBoardOnlyOf(COMPUTER.GOOD);
-  });
+    it('returns board with one bad computer after the time of rest', () => {
+      const veryShortTime = 10;
 
-  it('returns board with one bad computer after the time of rest', () => {
-    game.run();
+      jest.advanceTimersByTime(timeOfRest - veryShortTime);
 
-    jest.advanceTimersByTime(timeOfRest - 10);
+      expectBoardOnlyOf(COMPUTER.GOOD);
 
-    expectBoardOnlyOf(COMPUTER.GOOD);
+      jest.advanceTimersByTime(veryShortTime);
 
-    jest.advanceTimersByTime(20);
-
-    expect(gameState().board.count(COMPUTER.BAD)).toBe(1);
+      expect(gameState().board.count(COMPUTER.BAD)).toBe(1);
+    });
   });
 });
