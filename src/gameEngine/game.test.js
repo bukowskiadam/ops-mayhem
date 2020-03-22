@@ -1,6 +1,5 @@
 import { Game } from './game.js';
 import { COMPUTER, GAME_STATUS } from './consts';
-import { countComputers } from './utils';
 
 jest.useFakeTimers();
 
@@ -9,11 +8,6 @@ describe('Game', () => {
 
   const timeOfRest = 1000;
   const boardSize = 3;
-  const goodBoard = [
-    [COMPUTER.GOOD, COMPUTER.GOOD, COMPUTER.GOOD],
-    [COMPUTER.GOOD, COMPUTER.GOOD, COMPUTER.GOOD],
-    [COMPUTER.GOOD, COMPUTER.GOOD, COMPUTER.GOOD],
-  ];
 
   beforeEach(() => {
     game = Game({
@@ -28,6 +22,11 @@ describe('Game', () => {
 
   const gameState = () => game.getState();
 
+  const expectBoardOnlyOf = (computerStatus) => {
+    const { board } = gameState();
+    expect(board.count(computerStatus)).toBe(board.getFields().length);
+  };
+
   it('creates new game instance with required methods', () => {
     expect(game).toBeInstanceOf(Object);
     expect(game).toStrictEqual({
@@ -38,7 +37,7 @@ describe('Game', () => {
     });
   });
 
-  it('returns current game status', () => {
+  it('returns current game status when game is started', () => {
     expect(gameState().status).toBe(GAME_STATUS.NOT_STARTED);
 
     game.run();
@@ -46,16 +45,16 @@ describe('Game', () => {
     expect(gameState().status).toBe(GAME_STATUS.RUNNING);
   });
 
-  it('returns game size', () => {
+  it('returns board size', () => {
     expect(gameState().boardSize).toBe(boardSize);
   });
 
-  it('returns current game board', () => {
+  it('starts the game with board of only good computers', () => {
     expect(gameState().board).toBe(null);
 
     game.run();
 
-    expect(gameState().board).toStrictEqual(goodBoard);
+    expectBoardOnlyOf(COMPUTER.GOOD);
   });
 
   it('returns board with one bad computer after the time of rest', () => {
@@ -63,12 +62,10 @@ describe('Game', () => {
 
     jest.advanceTimersByTime(timeOfRest - 10);
 
-    expect(gameState().board).toStrictEqual(goodBoard);
+    expectBoardOnlyOf(COMPUTER.GOOD);
 
     jest.advanceTimersByTime(20);
 
-    const badComputers = countComputers(gameState().board, COMPUTER.BAD);
-
-    expect(badComputers).toBe(1);
+    expect(gameState().board.count(COMPUTER.BAD)).toBe(1);
   });
 });

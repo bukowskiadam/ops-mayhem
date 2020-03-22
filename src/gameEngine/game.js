@@ -1,5 +1,5 @@
 import { COMPUTER, GAME_STATUS } from './consts';
-import { makeBoard } from './utils';
+import { Board } from './board';
 
 export const Game = ({
   timeOfRest,
@@ -19,13 +19,13 @@ export const Game = ({
   let currentTimeout;
 
   const breakNextComputer = () => {
-    state.board[0][0] = COMPUTER.BAD;
+    state.board.setField(0, COMPUTER.BAD);
   };
 
   const run = () => {
     state.status = GAME_STATUS.RUNNING;
     state.boardSize = internalState.boardSize;
-    state.board = makeBoard(internalState.boardSize, COMPUTER.GOOD);
+    state.board = Board(internalState.boardSize, COMPUTER.GOOD);
 
     currentTimeout = setTimeout(breakNextComputer, internalState.timeOfRest);
   };
