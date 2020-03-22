@@ -2,42 +2,94 @@ import { COMPUTER, GAME_STATUS } from './consts';
 import { Board } from './board';
 import { randomBreakOrder } from './breakOrder';
 
+const LevelGenerator = ({
+  timeOfRest,
+  timeToFix,
+  boardSize,
+  maxOverdue,
+}) => {
+  const make = (level) => ({
+    timeOfRest,
+    timeToFix,
+    boardSize,
+    maxOverdue,
+  });
+
+  return {
+    make,
+  };
+};
+
 export const Game = ({
   timeOfRest,
+  timeToFix,
   boardSize,
+  maxOverdue,
 }) => {
-  const internalState = {
+  const levelGenerator = LevelGenerator({
     timeOfRest,
+    timeToFix,
     boardSize,
-  };
+    maxOverdue,
+  });
 
   const state = {
+    level: 0,
     status: GAME_STATUS.NOT_STARTED,
     boardSize,
     board: null,
   };
 
+  let levelParams;
   let currentTimeout;
+  let currentComputer;
+  let breakOrder;
 
-  const breakNextComputer = () => {
-    const next = internalState.breakOrder.next();
+  const setCurrentOverdue = () => {
+    state.board.setField(currentComputer, COMPUTER.OVERDUE);
 
-    if (!next.done) {
-      state.board.setField(next.value, COMPUTER.BAD);
+    if (state.board.count(COMPUTER.OVERDUE) > maxOverdue) {
+      destroy();
+      state.status = GAME_STATUS.FINISHED;
+    } else {
+      currentTimeout = setTimeout(breakNextComputer, levelParams.timeOfRest);
     }
   };
 
-  const run = () => {
-    state.status = GAME_STATUS.RUNNING;
-    state.boardSize = internalState.boardSize;
-    state.board = Board(internalState.boardSize, COMPUTER.GOOD);
-    internalState.breakOrder = randomBreakOrder(state.board.fieldsCount);
+  const breakNextComputer = () => {
+    const next = breakOrder.next();
 
-    currentTimeout = setTimeout(breakNextComputer, internalState.timeOfRest);
+    if (!next.done) {
+      currentComputer = next.value;
+
+      state.board.setField(currentComputer, COMPUTER.BAD);
+
+      currentTimeout = setTimeout(setCurrentOverdue, levelParams.timeToFix);
+    } else {
+      state.status = GAME_STATUS.LEVEL_COMPLETED;
+    }
   };
 
-  const action = () => {
-    throw new Error('To be implemented');
+  const start = () => {
+    state.level = state.level + 1;
+    state.status = GAME_STATUS.RUNNING;
+
+    levelParams = levelGenerator.make(state.level);
+    state.boardSize = levelParams.boardSize;
+    state.board = Board(levelParams.boardSize, COMPUTER.GOOD);
+    breakOrder = randomBreakOrder(state.board.fieldsCount);
+
+    currentTimeout = setTimeout(breakNextComputer, levelParams.timeOfRest);
+  };
+
+  const fix = (computer) => {
+    state.board.setField(computer, COMPUTER.GOOD);
+
+    if (currentComputer === computer) {
+      clearTimeout(currentTimeout);
+
+      currentTimeout = setTimeout(breakNextComputer, levelParams.timeOfRest);
+    }
   };
 
   const getState = () => state;
@@ -47,8 +99,8 @@ export const Game = ({
   };
 
   return {
-    run,
-    action,
+    start,
+    fix,
     getState,
     destroy,
   };

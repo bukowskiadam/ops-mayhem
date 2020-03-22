@@ -1,7 +1,8 @@
 export const GAME_STATUS = {
   NOT_STARTED: 'not-started',
   RUNNING: 'running',
-  OVER: 'game-over',
+  FINISHED: 'finished',
+  LEVEL_COMPLETED: 'level-completed',
 };
 
 export const COMPUTER = {
