@@ -22,9 +22,20 @@ describe('Game', () => {
     }),
   };
 
+  let currentTime = 0;
+  const now = jest.fn().mockReturnValue(currentTime);
+
   const createGame = () => Game({
     levelGenerator,
+    now,
   });
+
+  const advanceTime = (timeMs) => {
+    currentTime += timeMs;
+    now.mockReturnValue(currentTime);
+
+    jest.advanceTimersByTime(timeMs);
+  };
 
   const gameState = () => game.getState();
 
@@ -61,6 +72,7 @@ describe('Game', () => {
         board: null,
         boardSize: null,
         level: 0,
+        points: 0,
       });
     });
 
@@ -76,35 +88,36 @@ describe('Game', () => {
     });
 
     it('breaks first computer after the time of rest', () => {
-      jest.advanceTimersByTime(timeOfRest);
+      advanceTime(timeOfRest + 10);
 
       expect(gameState().board.count(COMPUTER.BAD)).toBe(1);
     });
 
     it('allows to fix first broken computer', () => {
-      const brokenComputer = findComputer(COMPUTER.BAD);
-
-      game.fix(brokenComputer);
+      game.fix(findComputer(COMPUTER.BAD));
 
       expectBoardOnlyOf(COMPUTER.GOOD);
     });
 
     it('breaks second computer after the time of rest', () => {
-      jest.advanceTimersByTime(timeOfRest);
+      advanceTime(timeOfRest + 10);
 
       expect(gameState().board.count(COMPUTER.BAD)).toBe(1);
     });
 
     it('sets second computer as overdue after the time to fix', () => {
-      jest.advanceTimersByTime(timeToFix);
+      advanceTime(timeToFix);
 
       expect(gameState().board.count(COMPUTER.OVERDUE)).toBe(1);
     });
 
-    it('breaks third computer after the time of rest', () => {
-      jest.advanceTimersByTime(timeOfRest);
+    it('allows to fix overdue computer but breaks third computer', () => {
+      advanceTime(timeOfRest / 2);
 
-      expect(gameState().board.count(COMPUTER.OVERDUE)).toBe(1);
+      game.fix(findComputer(COMPUTER.OVERDUE));
+      advanceTime(timeOfRest / 2);
+
+      expect(gameState().board.count(COMPUTER.OVERDUE)).toBe(0);
       expect(gameState().board.count(COMPUTER.BAD)).toBe(1);
     });
 
@@ -116,14 +129,14 @@ describe('Game', () => {
       expect(gameState().board.count(COMPUTER.OVERDUE)).toBe(0);
       expect(gameState().board.count(COMPUTER.BAD)).toBe(1);
 
-      jest.advanceTimersByTime(timeToFix);
+      advanceTime(timeToFix);
 
       expect(gameState().board.count(COMPUTER.OVERDUE)).toBe(1);
       expect(gameState().board.count(COMPUTER.BAD)).toBe(0);
     });
 
     it('breaks fourth computer after the time of rest', () => {
-      jest.advanceTimersByTime(timeOfRest);
+      advanceTime(timeOfRest);
 
       expect(gameState().board.count(COMPUTER.OVERDUE)).toBe(1);
       expect(gameState().board.count(COMPUTER.BAD)).toBe(1);
@@ -139,21 +152,21 @@ describe('Game', () => {
     });
 
     it('sets fourth computer as overdue after the time to fix', () => {
-      jest.advanceTimersByTime(timeToFix);
+      advanceTime(timeToFix);
 
       expect(gameState().board.count(COMPUTER.OVERDUE)).toBe(2);
       expect(gameState().board.count(COMPUTER.BAD)).toBe(0);
     });
 
     it('breaks fifth computer after the time of rest', () => {
-      jest.advanceTimersByTime(timeOfRest);
+      advanceTime(timeOfRest);
 
       expect(gameState().board.count(COMPUTER.OVERDUE)).toBe(2);
       expect(gameState().board.count(COMPUTER.BAD)).toBe(1);
     });
 
     it('finishes the game after max overdue has been exceeded', () => {
-      jest.advanceTimersByTime(timeToFix);
+      advanceTime(timeToFix);
 
       expect(gameState().board.count(COMPUTER.OVERDUE)).toBe(3);
       expect(gameState().board.count(COMPUTER.BAD)).toBe(0);
@@ -164,7 +177,7 @@ describe('Game', () => {
       clearTimeout.mockClear();
       setTimeout.mockClear();
 
-      jest.advanceTimersByTime(timeToFix * 100);
+      advanceTime(timeToFix * 100);
 
       expect(clearTimeout).not.toHaveBeenCalled();
       expect(setTimeout).not.toHaveBeenCalled();
@@ -189,7 +202,7 @@ describe('Game', () => {
       let count = gameState().board.fieldsCount;
 
       while (count--) {
-        jest.advanceTimersByTime(timeOfRest);
+        advanceTime(timeOfRest);
 
         game.fix(findComputer(COMPUTER.BAD));
       }
@@ -198,7 +211,7 @@ describe('Game', () => {
     });
 
     it('finishes the level after the time of rest', () => {
-      jest.advanceTimersByTime(timeOfRest);
+      advanceTime(timeOfRest);
 
       expect(gameState().status).toBe(GAME_STATUS.LEVEL_COMPLETED);
     });
@@ -210,6 +223,55 @@ describe('Game', () => {
 
       expect(gameState().level).toBe(2);
       expect(levelGenerator.make).toHaveBeenCalledWith(2);
+    });
+  });
+
+  describe('next level flow', () => {
+    let points = 0;
+
+    beforeAll(() => {
+      game = createGame();
+    });
+
+    afterAll(() => {
+      game.destroy();
+    });
+
+    it('starts the game with 0 points', () => {
+      game.start();
+
+      expect(gameState().points).toBe(points);
+    });
+
+    it('counts full points for a fixed bad computer', () => {
+      advanceTime(timeOfRest);
+
+      game.fix(findComputer(COMPUTER.BAD));
+      points += timeToFix;
+
+      expect(gameState().points).toBe(points);
+    });
+
+    it('counts partial points for a fixed bad computer', () => {
+      const delayTime = 400;
+
+      advanceTime(timeOfRest);
+      advanceTime(delayTime);
+
+      game.fix(findComputer(COMPUTER.BAD));
+      points += (timeToFix - delayTime);
+
+      expect(gameState().points).toBe(points);
+    });
+
+    it('does not count points for a fixed overdue computer', () => {
+      advanceTime(timeOfRest);
+      advanceTime(timeToFix);
+      advanceTime(100);
+
+      game.fix(findComputer(COMPUTER.OVERDUE));
+
+      expect(gameState().points).toBe(points);
     });
   });
 });
