@@ -1,0 +1,658 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Level generator calculate points for a filip gameplay 1`] = `
+Array [
+  Object {
+    "levelPoints": 100000,
+    "total": 100000,
+  },
+  Object {
+    "levelPoints": 93333.33333333333,
+    "total": 193333.3333333333,
+  },
+  Object {
+    "levelPoints": 125439.99999999997,
+    "total": 318773.33333333326,
+  },
+  Object {
+    "levelPoints": 117077.33333333328,
+    "total": 435850.6666666665,
+  },
+  Object {
+    "levelPoints": 148731.5753086419,
+    "total": 584582.2419753084,
+  },
+  Object {
+    "levelPoints": 181310.87275720155,
+    "total": 765893.11473251,
+  },
+  Object {
+    "levelPoints": 169223.48124005474,
+    "total": 935116.5959725647,
+  },
+  Object {
+    "levelPoints": 199895.23721481464,
+    "total": 1135011.8331873794,
+  },
+  Object {
+    "levelPoints": 230331.96057674114,
+    "total": 1365343.7937641204,
+  },
+  Object {
+    "levelPoints": 260121.56081133298,
+    "total": 1625465.3545754533,
+  },
+  Object {
+    "levelPoints": 288928.411347464,
+    "total": 1914393.7659229173,
+  },
+  Object {
+    "levelPoints": 367046.0929340005,
+    "total": 2281439.858856918,
+  },
+  Object {
+    "levelPoints": 393263.6710007148,
+    "total": 2674703.5298576327,
+  },
+  Object {
+    "levelPoints": 471450.3149241162,
+    "total": 3146153.844781749,
+  },
+  Object {
+    "levelPoints": 493309.94890329655,
+    "total": 3639463.7936850456,
+  },
+  Object {
+    "levelPoints": 568422.9863906298,
+    "total": 4207886.780075675,
+  },
+  Object {
+    "levelPoints": 641939.0259638177,
+    "total": 4849825.806039493,
+  },
+  Object {
+    "levelPoints": 773686.8425872457,
+    "total": 5623512.648626738,
+  },
+  Object {
+    "levelPoints": 842266.4443141792,
+    "total": 6465779.092940917,
+  },
+]
+`;
+
+exports[`Level generator calculate points for a noob gameplay 1`] = `
+Array [
+  Object {
+    "levelPoints": 27000,
+    "total": 27000,
+  },
+  Object {
+    "levelPoints": 27000,
+    "total": 54000,
+  },
+  Object {
+    "levelPoints": 27000,
+    "total": 81000,
+  },
+  Object {
+    "levelPoints": 27000.000000000004,
+    "total": 108000,
+  },
+  Object {
+    "levelPoints": 27000.00000000001,
+    "total": 135000,
+  },
+  Object {
+    "levelPoints": 27000,
+    "total": 162000,
+  },
+  Object {
+    "levelPoints": 48000.000000000015,
+    "total": 210000,
+  },
+  Object {
+    "levelPoints": 48000.00000000002,
+    "total": 258000.00000000003,
+  },
+  Object {
+    "levelPoints": 48000.00000000002,
+    "total": 306000.00000000006,
+  },
+  Object {
+    "levelPoints": 48000.00000000002,
+    "total": 354000.00000000006,
+  },
+  Object {
+    "levelPoints": 48000.00000000003,
+    "total": 402000.0000000001,
+  },
+  Object {
+    "levelPoints": 75000.00000000003,
+    "total": 477000.0000000001,
+  },
+  Object {
+    "levelPoints": 75000.00000000004,
+    "total": 552000.0000000001,
+  },
+  Object {
+    "levelPoints": 75000.00000000006,
+    "total": 627000.0000000002,
+  },
+  Object {
+    "levelPoints": 75000.00000000004,
+    "total": 702000.0000000002,
+  },
+  Object {
+    "levelPoints": 108000.00000000009,
+    "total": 810000.0000000003,
+  },
+  Object {
+    "levelPoints": 108000.00000000006,
+    "total": 918000.0000000005,
+  },
+  Object {
+    "levelPoints": 108000.00000000009,
+    "total": 1026000.0000000006,
+  },
+  Object {
+    "levelPoints": 147000.00000000015,
+    "total": 1173000.0000000007,
+  },
+]
+`;
+
+exports[`Level generator calculate points for a pro gameplay 1`] = `
+Array [
+  Object {
+    "levelPoints": 48000,
+    "total": 48000,
+  },
+  Object {
+    "levelPoints": 48000,
+    "total": 96000,
+  },
+  Object {
+    "levelPoints": 48000.00000000001,
+    "total": 144000,
+  },
+  Object {
+    "levelPoints": 47999.99999999999,
+    "total": 192000,
+  },
+  Object {
+    "levelPoints": 48000.00000000001,
+    "total": 240000,
+  },
+  Object {
+    "levelPoints": 75000,
+    "total": 315000,
+  },
+  Object {
+    "levelPoints": 75000,
+    "total": 390000,
+  },
+  Object {
+    "levelPoints": 74999.99999999999,
+    "total": 465000,
+  },
+  Object {
+    "levelPoints": 75000,
+    "total": 540000,
+  },
+  Object {
+    "levelPoints": 108000.00000000001,
+    "total": 648000,
+  },
+  Object {
+    "levelPoints": 108000,
+    "total": 756000,
+  },
+  Object {
+    "levelPoints": 108000,
+    "total": 864000,
+  },
+  Object {
+    "levelPoints": 147000,
+    "total": 1011000,
+  },
+  Object {
+    "levelPoints": 146999.99999999997,
+    "total": 1158000,
+  },
+  Object {
+    "levelPoints": 147000,
+    "total": 1305000,
+  },
+  Object {
+    "levelPoints": 192000.00000000003,
+    "total": 1497000,
+  },
+  Object {
+    "levelPoints": 192000.00000000003,
+    "total": 1689000,
+  },
+  Object {
+    "levelPoints": 242999.99999999997,
+    "total": 1932000,
+  },
+  Object {
+    "levelPoints": 243000.00000000003,
+    "total": 2175000,
+  },
+]
+`;
+
+exports[`Level generator creates levels params for a filip gameplay 1`] = `
+Array [
+  Object {
+    "boardSize": 5,
+    "maxOverdue": 3,
+    "pointsMultiplier": 2,
+    "timeOfRest": 500,
+    "timeToFix": 2000,
+  },
+  Object {
+    "boardSize": 5,
+    "maxOverdue": 3,
+    "pointsMultiplier": 2.8,
+    "timeOfRest": 333.3333333333333,
+    "timeToFix": 1333.3333333333333,
+  },
+  Object {
+    "boardSize": 6,
+    "maxOverdue": 3,
+    "pointsMultiplier": 3.9199999999999995,
+    "timeOfRest": 222.2222222222222,
+    "timeToFix": 888.8888888888888,
+  },
+  Object {
+    "boardSize": 6,
+    "maxOverdue": 3,
+    "pointsMultiplier": 5.487999999999999,
+    "timeOfRest": 148.14814814814812,
+    "timeToFix": 592.5925925925925,
+  },
+  Object {
+    "boardSize": 7,
+    "maxOverdue": 4,
+    "pointsMultiplier": 7.683199999999998,
+    "timeOfRest": 98.76543209876542,
+    "timeToFix": 395.06172839506166,
+  },
+  Object {
+    "boardSize": 8,
+    "maxOverdue": 4,
+    "pointsMultiplier": 10.756479999999996,
+    "timeOfRest": 65.84362139917694,
+    "timeToFix": 263.37448559670776,
+  },
+  Object {
+    "boardSize": 8,
+    "maxOverdue": 5,
+    "pointsMultiplier": 15.059071999999993,
+    "timeOfRest": 43.89574759945129,
+    "timeToFix": 175.58299039780516,
+  },
+  Object {
+    "boardSize": 9,
+    "maxOverdue": 5,
+    "pointsMultiplier": 21.08270079999999,
+    "timeOfRest": 29.263831732967525,
+    "timeToFix": 117.0553269318701,
+  },
+  Object {
+    "boardSize": 10,
+    "maxOverdue": 6,
+    "pointsMultiplier": 29.515781119999986,
+    "timeOfRest": 19.509221155311682,
+    "timeToFix": 78.03688462124673,
+  },
+  Object {
+    "boardSize": 11,
+    "maxOverdue": 7,
+    "pointsMultiplier": 41.32209356799998,
+    "timeOfRest": 13.006147436874453,
+    "timeToFix": 52.024589747497814,
+  },
+  Object {
+    "boardSize": 12,
+    "maxOverdue": 7,
+    "pointsMultiplier": 57.85093099519996,
+    "timeOfRest": 8.670764957916303,
+    "timeToFix": 34.68305983166521,
+  },
+  Object {
+    "boardSize": 14,
+    "maxOverdue": 8,
+    "pointsMultiplier": 80.99130339327994,
+    "timeOfRest": 5.780509971944201,
+    "timeToFix": 23.122039887776804,
+  },
+  Object {
+    "boardSize": 15,
+    "maxOverdue": 9,
+    "pointsMultiplier": 113.38782475059192,
+    "timeOfRest": 3.853673314629467,
+    "timeToFix": 15.414693258517868,
+  },
+  Object {
+    "boardSize": 17,
+    "maxOverdue": 10,
+    "pointsMultiplier": 158.74295465082866,
+    "timeOfRest": 2.5691155430863115,
+    "timeToFix": 10.276462172345246,
+  },
+  Object {
+    "boardSize": 18,
+    "maxOverdue": 11,
+    "pointsMultiplier": 222.24013651116013,
+    "timeOfRest": 1.7127436953908741,
+    "timeToFix": 6.8509747815634965,
+  },
+  Object {
+    "boardSize": 20,
+    "maxOverdue": 12,
+    "pointsMultiplier": 311.1361911156242,
+    "timeOfRest": 1.1418291302605827,
+    "timeToFix": 4.567316521042331,
+  },
+  Object {
+    "boardSize": 22,
+    "maxOverdue": 13,
+    "pointsMultiplier": 435.5906675618738,
+    "timeOfRest": 0.7612194201737217,
+    "timeToFix": 3.0448776806948867,
+  },
+  Object {
+    "boardSize": 25,
+    "maxOverdue": 15,
+    "pointsMultiplier": 609.8269345866232,
+    "timeOfRest": 0.5074796134491478,
+    "timeToFix": 2.0299184537965913,
+  },
+  Object {
+    "boardSize": 27,
+    "maxOverdue": 16,
+    "pointsMultiplier": 853.7577084212726,
+    "timeOfRest": 0.33831974229943185,
+    "timeToFix": 1.3532789691977274,
+  },
+]
+`;
+
+exports[`Level generator creates levels params for a noob gameplay 1`] = `
+Array [
+  Object {
+    "boardSize": 3,
+    "maxOverdue": 3,
+    "pointsMultiplier": 1,
+    "timeOfRest": 1000,
+    "timeToFix": 3000,
+  },
+  Object {
+    "boardSize": 3,
+    "maxOverdue": 3,
+    "pointsMultiplier": 1.1,
+    "timeOfRest": 909.090909090909,
+    "timeToFix": 2727.272727272727,
+  },
+  Object {
+    "boardSize": 3,
+    "maxOverdue": 3,
+    "pointsMultiplier": 1.2100000000000002,
+    "timeOfRest": 826.4462809917354,
+    "timeToFix": 2479.3388429752063,
+  },
+  Object {
+    "boardSize": 3,
+    "maxOverdue": 3,
+    "pointsMultiplier": 1.3310000000000004,
+    "timeOfRest": 751.3148009015777,
+    "timeToFix": 2253.944402704733,
+  },
+  Object {
+    "boardSize": 3,
+    "maxOverdue": 3,
+    "pointsMultiplier": 1.4641000000000006,
+    "timeOfRest": 683.0134553650706,
+    "timeToFix": 2049.040366095212,
+  },
+  Object {
+    "boardSize": 3,
+    "maxOverdue": 3,
+    "pointsMultiplier": 1.6105100000000006,
+    "timeOfRest": 620.921323059155,
+    "timeToFix": 1862.763969177465,
+  },
+  Object {
+    "boardSize": 4,
+    "maxOverdue": 4,
+    "pointsMultiplier": 1.7715610000000008,
+    "timeOfRest": 564.4739300537773,
+    "timeToFix": 1693.421790161332,
+  },
+  Object {
+    "boardSize": 4,
+    "maxOverdue": 4,
+    "pointsMultiplier": 1.9487171000000012,
+    "timeOfRest": 513.1581182307067,
+    "timeToFix": 1539.47435469212,
+  },
+  Object {
+    "boardSize": 4,
+    "maxOverdue": 4,
+    "pointsMultiplier": 2.1435888100000016,
+    "timeOfRest": 466.5073802097333,
+    "timeToFix": 1399.5221406291998,
+  },
+  Object {
+    "boardSize": 4,
+    "maxOverdue": 4,
+    "pointsMultiplier": 2.357947691000002,
+    "timeOfRest": 424.09761837248476,
+    "timeToFix": 1272.2928551174543,
+  },
+  Object {
+    "boardSize": 4,
+    "maxOverdue": 4,
+    "pointsMultiplier": 2.5937424601000023,
+    "timeOfRest": 385.5432894295316,
+    "timeToFix": 1156.629868288595,
+  },
+  Object {
+    "boardSize": 5,
+    "maxOverdue": 5,
+    "pointsMultiplier": 2.8531167061100025,
+    "timeOfRest": 350.49389948139236,
+    "timeToFix": 1051.481698444177,
+  },
+  Object {
+    "boardSize": 5,
+    "maxOverdue": 5,
+    "pointsMultiplier": 3.138428376721003,
+    "timeOfRest": 318.63081771035667,
+    "timeToFix": 955.89245313107,
+  },
+  Object {
+    "boardSize": 5,
+    "maxOverdue": 5,
+    "pointsMultiplier": 3.452271214393104,
+    "timeOfRest": 289.6643797366879,
+    "timeToFix": 868.9931392100638,
+  },
+  Object {
+    "boardSize": 5,
+    "maxOverdue": 5,
+    "pointsMultiplier": 3.7974983358324144,
+    "timeOfRest": 263.33125430607987,
+    "timeToFix": 789.9937629182397,
+  },
+  Object {
+    "boardSize": 6,
+    "maxOverdue": 6,
+    "pointsMultiplier": 4.177248169415656,
+    "timeOfRest": 239.39204936916352,
+    "timeToFix": 718.1761481074906,
+  },
+  Object {
+    "boardSize": 6,
+    "maxOverdue": 6,
+    "pointsMultiplier": 4.594972986357222,
+    "timeOfRest": 217.62913579014864,
+    "timeToFix": 652.8874073704459,
+  },
+  Object {
+    "boardSize": 6,
+    "maxOverdue": 6,
+    "pointsMultiplier": 5.054470284992945,
+    "timeOfRest": 197.84466890013513,
+    "timeToFix": 593.5340067004054,
+  },
+  Object {
+    "boardSize": 7,
+    "maxOverdue": 7,
+    "pointsMultiplier": 5.55991731349224,
+    "timeOfRest": 179.85878990921375,
+    "timeToFix": 539.5763697276412,
+  },
+]
+`;
+
+exports[`Level generator creates levels params for a pro gameplay 1`] = `
+Array [
+  Object {
+    "boardSize": 4,
+    "maxOverdue": 4,
+    "pointsMultiplier": 1.2,
+    "timeOfRest": 750,
+    "timeToFix": 2500,
+  },
+  Object {
+    "boardSize": 4,
+    "maxOverdue": 4,
+    "pointsMultiplier": 1.44,
+    "timeOfRest": 625,
+    "timeToFix": 2083.3333333333335,
+  },
+  Object {
+    "boardSize": 4,
+    "maxOverdue": 4,
+    "pointsMultiplier": 1.728,
+    "timeOfRest": 520.8333333333334,
+    "timeToFix": 1736.1111111111113,
+  },
+  Object {
+    "boardSize": 4,
+    "maxOverdue": 4,
+    "pointsMultiplier": 2.0735999999999994,
+    "timeOfRest": 434.02777777777777,
+    "timeToFix": 1446.7592592592594,
+  },
+  Object {
+    "boardSize": 4,
+    "maxOverdue": 4,
+    "pointsMultiplier": 2.48832,
+    "timeOfRest": 361.6898148148149,
+    "timeToFix": 1205.632716049383,
+  },
+  Object {
+    "boardSize": 5,
+    "maxOverdue": 5,
+    "pointsMultiplier": 2.9859839999999993,
+    "timeOfRest": 301.4081790123458,
+    "timeToFix": 1004.6939300411525,
+  },
+  Object {
+    "boardSize": 5,
+    "maxOverdue": 5,
+    "pointsMultiplier": 3.583180799999999,
+    "timeOfRest": 251.17348251028812,
+    "timeToFix": 837.2449417009605,
+  },
+  Object {
+    "boardSize": 5,
+    "maxOverdue": 5,
+    "pointsMultiplier": 4.2998169599999985,
+    "timeOfRest": 209.3112354252401,
+    "timeToFix": 697.7041180841337,
+  },
+  Object {
+    "boardSize": 5,
+    "maxOverdue": 5,
+    "pointsMultiplier": 5.159780351999998,
+    "timeOfRest": 174.42602952103346,
+    "timeToFix": 581.4200984034449,
+  },
+  Object {
+    "boardSize": 6,
+    "maxOverdue": 6,
+    "pointsMultiplier": 6.191736422399998,
+    "timeOfRest": 145.3550246008612,
+    "timeToFix": 484.5167486695374,
+  },
+  Object {
+    "boardSize": 6,
+    "maxOverdue": 6,
+    "pointsMultiplier": 7.430083706879996,
+    "timeOfRest": 121.12918716738434,
+    "timeToFix": 403.7639572246145,
+  },
+  Object {
+    "boardSize": 6,
+    "maxOverdue": 6,
+    "pointsMultiplier": 8.916100448255996,
+    "timeOfRest": 100.94098930615363,
+    "timeToFix": 336.4699643538454,
+  },
+  Object {
+    "boardSize": 7,
+    "maxOverdue": 7,
+    "pointsMultiplier": 10.699320537907195,
+    "timeOfRest": 84.11749108846136,
+    "timeToFix": 280.39163696153787,
+  },
+  Object {
+    "boardSize": 7,
+    "maxOverdue": 7,
+    "pointsMultiplier": 12.839184645488633,
+    "timeOfRest": 70.09790924038447,
+    "timeToFix": 233.6596974679482,
+  },
+  Object {
+    "boardSize": 7,
+    "maxOverdue": 7,
+    "pointsMultiplier": 15.40702157458636,
+    "timeOfRest": 58.41492436698706,
+    "timeToFix": 194.71641455662353,
+  },
+  Object {
+    "boardSize": 8,
+    "maxOverdue": 8,
+    "pointsMultiplier": 18.48842588950363,
+    "timeOfRest": 48.67910363915589,
+    "timeToFix": 162.2636787971863,
+  },
+  Object {
+    "boardSize": 8,
+    "maxOverdue": 8,
+    "pointsMultiplier": 22.186111067404358,
+    "timeOfRest": 40.56591969929657,
+    "timeToFix": 135.21973233098856,
+  },
+  Object {
+    "boardSize": 9,
+    "maxOverdue": 9,
+    "pointsMultiplier": 26.623333280885223,
+    "timeOfRest": 33.80493308274714,
+    "timeToFix": 112.68311027582381,
+  },
+  Object {
+    "boardSize": 9,
+    "maxOverdue": 9,
+    "pointsMultiplier": 31.94799993706227,
+    "timeOfRest": 28.170777568955955,
+    "timeToFix": 93.90259189651985,
+  },
+]
+`;

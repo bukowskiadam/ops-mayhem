@@ -2,41 +2,13 @@ import { COMPUTER, GAME_STATUS } from './consts';
 import { Board } from './board';
 import { randomBreakOrder } from './breakOrder';
 
-const LevelGenerator = ({
-  timeOfRest,
-  timeToFix,
-  boardSize,
-  maxOverdue,
-}) => {
-  const make = (level) => ({
-    timeOfRest,
-    timeToFix,
-    boardSize,
-    maxOverdue,
-  });
-
-  return {
-    make,
-  };
-};
-
 export const Game = ({
-  timeOfRest,
-  timeToFix,
-  boardSize,
-  maxOverdue,
+  levelGenerator,
 }) => {
-  const levelGenerator = LevelGenerator({
-    timeOfRest,
-    timeToFix,
-    boardSize,
-    maxOverdue,
-  });
-
   const state = {
     level: 0,
     status: GAME_STATUS.NOT_STARTED,
-    boardSize,
+    boardSize: null,
     board: null,
   };
 
@@ -48,7 +20,7 @@ export const Game = ({
   const setCurrentOverdue = () => {
     state.board.setField(currentComputer, COMPUTER.OVERDUE);
 
-    if (state.board.count(COMPUTER.OVERDUE) > maxOverdue) {
+    if (state.board.count(COMPUTER.OVERDUE) > levelParams.maxOverdue) {
       destroy();
       state.status = GAME_STATUS.FINISHED;
     } else {

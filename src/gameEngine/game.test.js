@@ -10,12 +10,20 @@ describe('Game', () => {
   const timeToFix = 3000;
   const boardSize = 3;
   const maxOverdue = 2;
+  const pointsMultipler = 1;
+
+  const levelGenerator = {
+    make: jest.fn().mockReturnValue({
+      timeOfRest,
+      timeToFix,
+      boardSize,
+      maxOverdue,
+      pointsMultipler,
+    }),
+  };
 
   const createGame = () => Game({
-    timeOfRest,
-    timeToFix,
-    boardSize,
-    maxOverdue,
+    levelGenerator,
   });
 
   const gameState = () => game.getState();
@@ -49,17 +57,18 @@ describe('Game', () => {
 
     it('returns correct game state before it is started', () => {
       expect(gameState()).toStrictEqual({
-        boardSize: 3,
         status: GAME_STATUS.NOT_STARTED,
         board: null,
+        boardSize: null,
         level: 0,
       });
     });
 
-    it('returns correct game status after game is started', () => {
+    it('returns correct game state after game is started', () => {
       game.start();
 
       expect(gameState().status).toBe(GAME_STATUS.RUNNING);
+      expect(gameState().boardSize).toBe(boardSize);
     });
 
     it('starts the game with board of only good computers', () => {
@@ -195,9 +204,12 @@ describe('Game', () => {
     });
 
     it('increases level when started again', () => {
+      levelGenerator.make.mockClear();
+
       game.start();
 
       expect(gameState().level).toBe(2);
+      expect(levelGenerator.make).toHaveBeenCalledWith(2);
     });
   });
 });
