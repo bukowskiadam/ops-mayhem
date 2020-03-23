@@ -1,6 +1,6 @@
 export const Board = (size, initialState) => {
   const fieldsCount = size * size;
-  const fields = new Array(size * size).fill(initialState);
+  let fields = new Array(size * size).fill(initialState);
 
   const getFields = () => fields;
 
@@ -9,6 +9,7 @@ export const Board = (size, initialState) => {
       throw new Error(`Field ${ fieldPosition } is out of the board of ${ fieldsCount } total fields`);
     }
 
+    fields = [...fields];
     fields[fieldPosition] = state;
   };
 

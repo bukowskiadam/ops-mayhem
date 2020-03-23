@@ -2,13 +2,13 @@ import { COMPUTER, GAME_STATUS } from './consts';
 import { Board } from './board';
 import { randomBreakOrder } from './breakOrder';
 
-const now = global.performance
+const _now = global.performance
   ? () => global.performance.now()
   : () => Date.now();
 
 export const Game = ({
   levelGenerator,
-  now = now,
+  now = _now,
 }) => {
   const state = {
     level: 0,

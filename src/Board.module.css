@@ -1,0 +1,29 @@
+.board {
+  background: #ffc668;
+  display: inline-grid;
+  justify-items: stretch;
+  align-items: stretch;
+  justify-content: stretch;
+  align-content: stretch;
+  grid-gap: 1vmin 1vmin;
+  padding: 1vmin;
+}
+
+.computer {
+  color: black;
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+}
+
+.computer.good {
+  background-color: forestgreen;
+}
+
+.computer.bad {
+  background-color: orangered;
+}
+
+.computer.overdue {
+  background-color: darkred;
+}
