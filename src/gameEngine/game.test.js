@@ -73,6 +73,7 @@ describe('Game', () => {
         boardSize: null,
         level: 0,
         points: 0,
+        maxOverdue: 0,
       });
     });
 

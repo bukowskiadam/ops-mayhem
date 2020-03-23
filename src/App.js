@@ -31,11 +31,12 @@ export const App = () => {
         <p>You have to make sure our servers work properly.</p>
         <p>
           If it blinks red it's bad server. You can fix it by click.
-          You earn points for fixing bad computers.
+          You save Schibsted's money for fixing bad computers ASAP.
           After some time bad computers turns into overdue fix.
-          You won't get points for them but the game is over if you have
-          too many of them. Keep an eye on our infra and good luck!
+          You won't get NOKs for them anymore but the game is over if you have
+          too many of them.
         </p>
+        <p>Keep an eye on our infra and good luck!</p>
         <p>Select level:</p>
         {
           Object.keys(LevelGenerator.PREDEFINED).map(

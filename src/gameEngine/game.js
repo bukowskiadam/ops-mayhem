@@ -16,6 +16,7 @@ export const Game = ({
     boardSize: null,
     board: null,
     points: 0,
+    maxOverdue: 0,
   };
 
   let levelParams;
@@ -58,6 +59,7 @@ export const Game = ({
     levelParams = levelGenerator.make(state.level);
     state.boardSize = levelParams.boardSize;
     state.board = Board(levelParams.boardSize, COMPUTER.GOOD);
+    state.maxOverdue = levelParams.maxOverdue;
     breakOrder = randomBreakOrder(state.board.fieldsCount);
 
     currentTimeout = setTimeout(breakNextComputer, levelParams.timeOfRest);
