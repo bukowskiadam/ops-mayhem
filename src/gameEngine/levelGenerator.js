@@ -33,8 +33,8 @@ const LevelGenerator = (
 LevelGenerator.PREDEFINED = {
   noob: () => LevelGenerator(
     {
-      timeOfRest: 1000,
-      timeToFix: 3000,
+      timeOfRest: 750,
+      timeToFix: 1500,
       boardSize: 3,
       maxOverdue: 3,
       pointsMultiplier: 1,
@@ -47,8 +47,8 @@ LevelGenerator.PREDEFINED = {
   ),
   pro: () => LevelGenerator(
     {
-      timeOfRest: 750,
-      timeToFix: 2500,
+      timeOfRest: 500,
+      timeToFix: 1250,
       boardSize: 4,
       maxOverdue: 4,
       pointsMultiplier: 1.2,
@@ -61,16 +61,16 @@ LevelGenerator.PREDEFINED = {
   ),
   filip: () => LevelGenerator(
     {
-      timeOfRest: 500,
-      timeToFix: 2000,
+      timeOfRest: 300,
+      timeToFix: 1000,
       boardSize: 5,
       maxOverdue: 3,
-      pointsMultiplier: 2,
+      pointsMultiplier: 3,
     },
     {
       timeDecrease: 1 / 1.5,
       sizeIncrease: 1.1,
-      pointsIncrease: 1.4,
+      pointsIncrease: 2,
     },
   ),
 };
