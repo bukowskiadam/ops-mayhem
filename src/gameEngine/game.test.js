@@ -94,14 +94,18 @@ describe('Game', () => {
       expect(gameState().board.count(COMPUTER.BAD)).toBe(1);
     });
 
-    it('allows to fix first broken computer', () => {
-      game.fix(findComputer(COMPUTER.BAD));
+    it('allows to fix first broken computer just once', () => {
+      const badComputer = findComputer(COMPUTER.BAD);
+      game.fix(badComputer);
 
       expectBoardOnlyOf(COMPUTER.GOOD);
+
+      advanceTime(timeOfRest - 10);
+      game.fix(badComputer);
     });
 
     it('breaks second computer after the time of rest', () => {
-      advanceTime(timeOfRest + 10);
+      advanceTime(10);
 
       expect(gameState().board.count(COMPUTER.BAD)).toBe(1);
     });
@@ -123,9 +127,7 @@ describe('Game', () => {
     });
 
     it('allows to fix overdue computer but time for bad goes on', () => {
-      const overdueComputer = findComputer(COMPUTER.OVERDUE);
-
-      game.fix(overdueComputer);
+      game.fix(findComputer(COMPUTER.OVERDUE));
 
       expect(gameState().board.count(COMPUTER.OVERDUE)).toBe(0);
       expect(gameState().board.count(COMPUTER.BAD)).toBe(1);
@@ -144,9 +146,7 @@ describe('Game', () => {
     });
 
     it('does nothing if you try to fix good computer', () => {
-      const goodComputer = findComputer(COMPUTER.GOOD);
-
-      game.fix(goodComputer);
+      game.fix(findComputer(COMPUTER.GOOD));
 
       expect(gameState().board.count(COMPUTER.OVERDUE)).toBe(1);
       expect(gameState().board.count(COMPUTER.BAD)).toBe(1);

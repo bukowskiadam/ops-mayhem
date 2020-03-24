@@ -69,6 +69,7 @@ export const Game = ({
     state.board.setField(computer, COMPUTER.GOOD);
 
     if (currentComputer === computer) {
+      currentComputer = null;
       clearTimeout(currentTimeout);
 
       const points = levelParams.timeToFix - (now() - brokenAt);
