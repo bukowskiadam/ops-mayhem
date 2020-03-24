@@ -38,6 +38,8 @@ export const Game = ({ gameLevel }) => {
       });
 
       startNextLevel();
+
+      return () => game.current.destroy();
     },
     [gameLevel],
   );
