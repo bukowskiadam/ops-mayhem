@@ -14,3 +14,7 @@
   font-size: calc(12px + 3vmin);
   color: white;
 }
+
+.gift {
+  max-width: 50vmin;
+}

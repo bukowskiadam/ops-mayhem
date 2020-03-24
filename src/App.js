@@ -5,6 +5,8 @@ import commonStyle from './common.module.css';
 import { Game } from './Game';
 import { LevelGenerator } from './gameEngine';
 
+import giftImage from './assets/gift.jpg';
+
 export const App = () => {
   const [showWishes, setWishes] = useState(true);
   const [gameLevel, setGameLevel] = useState(null);
@@ -16,6 +18,12 @@ export const App = () => {
       <div>
         <p>Happy birthday Filip!</p>
         <p>We wish you all the best!</p>
+        <p><img className={style.gift} src={giftImage} alt="Gift in the office" /></p>
+        <p className={style.giftText}>
+          <span role="img" aria-label="point uo">👆🏻</span>
+          This is your gift waiting<br />in the office to pick up.
+          <br />Happy sawing!
+        </p>
         <button
           className={ commonStyle.button }
           onClick={ () => setWishes(false) }
